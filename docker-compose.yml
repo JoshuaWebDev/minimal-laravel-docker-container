@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    container_name: laravel_app
+    build: ./.docker
+    restart: always
+    ports:
+      - ${APP_PORT}:80
+    volumes:
+      - ./:/var/www/html/${APP_NAME}
+      - ./.docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
